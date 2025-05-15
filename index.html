@@ -7,47 +7,57 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <audio id="bg-music" autoplay loop>
+    <source src="musik.mp3" type="audio/mpeg">
+  </audio>
 
-  <div class="card">
-    <div class="photo-wrapper">
-      <div class="candle left">
-        <div class="flame"></div>
-        <div class="wick"></div>
-        <div class="body"></div>
+  <div class="container">
+    <div class="card">
+      <div class="photo-wrapper">
+        <div class="candle left">
+          <div class="holder"></div>
+          <div class="flame off"></div>
+          <div class="wick"></div>
+          <div class="body"></div>
+        </div>
+
+        <div class="flower-area" onclick="dropFlower()">
+          <img src="bunga.png" class="flower" id="flower">
+        </div>
+
+        <div id="photo-carousel" class="photo-frame">
+          <img src="foto1.jpg" class="photo active">
+          <img src="foto2.jpg" class="photo">
+          <img src="foto3.jpg" class="photo">
+          <img src="foto4.jpg" class="photo">
+        </div>
+
+        <div class="candle right">
+          <div class="holder"></div>
+          <div class="flame off"></div>
+          <div class="wick"></div>
+          <div class="body"></div>
+        </div>
       </div>
 
-      <img src="Kasianus-man.jpg" alt="Kasianus Man" class="framed-photo">
+      <hr class="divider">
 
-      <div class="candle right">
-        <div class="flame"></div>
-        <div class="wick"></div>
-        <div class="body"></div>
+      <button onclick="toggleFlames()" id="toggleBtn" class="btn">Nyalakan Lilin</button>
+
+      <h1 id="typewriter"></h1>
+      <div class="date">Wafat 18 Februari 2025</div>
+      <div class="bio card-shadow">
+        Kasianus Man dikenal sebagai pribadi sederhana dan penuh welas asih. Ia mendedikasikan hidupnya untuk komunitas dan budaya lokal. Kepergiannya menyisakan duka yang dalam, tetapi warisannya tetap hidup dalam kenangan dan karya-karya yang ia tinggalkan.
       </div>
-    </div>
-
-    <!-- Tombol di bawah foto -->
-    <button onclick="toggleFlames()" id="toggleBtn" class="btn">Matikan Lilin</button>
-
-    <h1>Kasianus Man</h1>
-    <div class="date">Wafat 18 Februari 2025</div>
-    <div class="bio">
-      Kasianus Man dikenal sebagai pribadi sederhana dan penuh welas asih. Ia mendedikasikan hidupnya untuk komunitas dan budaya lokal. Kepergiannya menyisakan duka yang dalam, tetapi warisannya tetap hidup dalam kenangan dan karya-karya yang ia tinggalkan.
     </div>
   </div>
 
+  <script src="script.js"></script>
   <script>
-    let flameOn = true;
-
-    function toggleFlames() {
-      flameOn = !flameOn;
-      document.querySelectorAll('.flame').forEach(f => {
-        f.classList.toggle('off');
-      });
-
-      const btn = document.getElementById('toggleBtn');
-      btn.textContent = flameOn ? 'Matikan Lilin' : 'Nyalakan Lilin';
-    }
+    const music = document.getElementById('bg-music');
+    document.body.addEventListener('click', () => {
+      music.play().catch(() => {});
+    }, { once: true });
   </script>
-
 </body>
 </html>
